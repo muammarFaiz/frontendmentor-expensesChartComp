@@ -11,8 +11,8 @@
     font-size: 11px;
     /* background-color: red; */
   }
-  header > :nth-child(2) {
-    width: 50px;
+  .headerright {
+    width: 65px;
   }
   header {
     padding: 4px 28px;

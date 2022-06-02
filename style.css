@@ -24,9 +24,13 @@ header {
   margin-bottom: 24px;
 }
 
-header> :nth-child(2) {
-  background-color: red;
-  width: 100px;
+.headerright {
+  width: 80px;
+  display: grid;
+  justify-items: center;
+}
+.headerright > img {
+  margin: auto;
 }
 
 .headerleft>p {
@@ -92,12 +96,12 @@ figcaption>div>p {
   background-color: hsl(10, 79%, 65%);
   width: 52px;
   border-radius: 6px;
-}
-
-.bar {
   margin: auto;
+  transition: height 1.5s;
 }
-
+.highestbar {
+  background-color: hsl(186, 34%, 60%);
+}
 .totalperday {
   height: fit-content;
   width: fit-content;
@@ -149,7 +153,7 @@ figcaption>div>p {
 }
 
 .fri>.bar {
-  height: 70px;
+  height: 50px;
 }
 
 .sat>.bar {
@@ -173,6 +177,7 @@ article {
 .wrap {
   position: relative;
   /* border: 1px solid black; */
+  margin-top: 100px;
 }
 
 figure>h1 {

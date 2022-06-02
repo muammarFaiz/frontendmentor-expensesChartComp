@@ -12,6 +12,9 @@ const userdata = [
   {"day": "sun", "amount": 25.48}
 ]
 
+const PERCENTAGE_MULTIPLIER = 6
+const LOWEST_HEIGHT = 1
+
 const main = async () => {
   // userbalance.innerHTML = 'Loading...'
   // const x = await fetch('../data.json')
@@ -19,6 +22,15 @@ const main = async () => {
   userbalance.innerHTML = '$921.48'
   console.log(userdata);
   const aa = barscontainer.children
+  let totalmoney = 0
+  let highestN = 0
+  for (let i = 0; i < userdata.length - 1; i++) {
+    const amount = userdata[i].amount
+    totalmoney = totalmoney + amount
+    if(amount > highestN) {
+      highestN = amount
+    }
+  }
   for(let i = 0; i < aa.length; i++) {
     const barchild = aa[i]
     const itsdata = userdata.find(obj => obj.day === barchild.className)
@@ -28,7 +40,13 @@ const main = async () => {
       const theh1 = d.createElement('h1')
       theh1.innerHTML = `$${itsdata.amount}`
       itstotal.appendChild(theh1)
-      // barchild.children[1].setAttribute('style', 'height: ')
+      const itsPercentage = (100 / (totalmoney / itsdata.amount)) * PERCENTAGE_MULTIPLIER
+      const itsheight = LOWEST_HEIGHT + Math.round(itsPercentage)
+      console.log(itsheight);
+      thebar.setAttribute('style', `height: ${itsheight}px`)
+      if(itsdata.amount === highestN) {
+        thebar.classList.add('highestbar')
+      }
     }
   }
 
