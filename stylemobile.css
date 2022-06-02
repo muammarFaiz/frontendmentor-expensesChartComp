@@ -1,0 +1,62 @@
+@media only screen and (max-width: 375px) {
+  .bar {
+    width: 35px;
+    border-radius: 4px;
+  }
+  .totalperday {
+    padding: 7px 5px;
+    margin: 0px auto 8px;
+  }
+  .totalperday > h1 {
+    font-size: 11px;
+    /* background-color: red; */
+  }
+  header > :nth-child(2) {
+    width: 50px;
+  }
+  header {
+    padding: 4px 28px;
+    margin-bottom: 24px;
+  }
+  .headerleft > h1 {
+    font-size: 26px;
+  }
+  .headerleft > p {
+    font-size: 15px;
+  }
+  .bars {
+    padding: 4px;
+    margin-bottom: 25px;
+  }
+  article {
+    padding: 22px 13px 5px;
+    border-radius: 9px;
+  }
+  figure > h1 {
+    font-size: 23px;
+    margin-left: 7px;
+  }
+  .footertext {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .footertext2 {
+    font-size: 15px;
+  }
+  .footernumber {
+    font-size: 31px;
+    line-height: 0.98;
+  }
+  .footernumber2 {
+    font-size: 16px;
+  }
+  footer {
+    padding: 0px 9px 17px;
+  }
+  .bars> :nth-child(n+8) {
+    font-size: 12px;
+  }
+  .mainhr {
+    margin-bottom: 24px;
+  }
+}

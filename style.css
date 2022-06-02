@@ -1,0 +1,197 @@
+body {
+  background-color: hsl(27, 66%, 92%);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  color: hsl(25, 47%, 15%);
+}
+
+.card {
+  /* border: 2px solid green; */
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  width: fit-content;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: hsl(10, 79%, 65%);
+  padding: 5px 35px;
+  border-radius: 19px;
+  margin-bottom: 24px;
+}
+
+header> :nth-child(2) {
+  background-color: red;
+  width: 100px;
+}
+
+.headerleft>p {
+  margin-bottom: 3px;
+  color: hsl(33, 100%, 98%);
+}
+
+.headerleft>h1 {
+  margin-top: 0;
+  color: hsl(33, 100%, 98%);
+}
+
+figcaption {
+  display: flex;
+  justify-content: space-between;
+  /* the opacity for hover */
+}
+
+figcaption>div>p {
+  margin: 0;
+}
+
+.footertext,
+.footertext2 {
+  opacity: 0.5;
+  margin: 0;
+}
+
+.footernumber {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.footernumber2 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.footerrightwrap {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /* border: 1px solid red; */
+}
+
+.captright {
+  text-align: right;
+  position: relative;
+  width: 140px;
+  /* border: 1px solid black; */
+}
+
+.bars {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  /* column-gap: 14px; */
+  row-gap: 8px;
+  align-items: end;
+  padding: 7px;
+}
+
+.bar {
+  background-color: hsl(10, 79%, 65%);
+  width: 52px;
+  border-radius: 6px;
+}
+
+.bar {
+  margin: auto;
+}
+
+.totalperday {
+  height: fit-content;
+  width: fit-content;
+  margin: 0px auto 8px;
+  padding: 9px 7px 7px;
+  visibility: hidden;
+  background-color: hsl(25, 47%, 15%);
+  color: hsl(33, 100%, 98%);
+  border-radius: 5px;
+  /* the box is not centered??? */
+}
+
+.totalperday>h1 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1;
+  width: fit-content;
+}
+
+.bars> :nth-child(n+8) {
+  text-align: center;
+  opacity: 0.5;
+  font-size: 16px;
+}
+
+.showtotalday {
+  visibility: visible;
+}
+
+.bar:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.mon>.bar {
+  height: 150px;
+}
+
+.tue>.bar {
+  height: 60px;
+}
+
+.wed>.bar {
+  height: 90px;
+}
+
+.thu>.bar {
+  height: 169px;
+}
+
+.fri>.bar {
+  height: 70px;
+}
+
+.sat>.bar {
+  height: 135px;
+}
+
+.sun>.bar {
+  height: 110px;
+}
+
+figure {
+  margin: 0;
+}
+
+article {
+  background-color: hsl(33, 100%, 98%);
+  border-radius: 19px;
+  padding: 40px;
+}
+
+.wrap {
+  position: relative;
+  /* border: 1px solid black; */
+}
+
+figure>h1 {
+  margin-top: 0;
+}
+
+.mainhr {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  margin-top: 27px;
+  margin-bottom: 29px;
+}
+
+footer {
+  padding: 0px 18px;
+}
+
+.attribution {
+  margin-top: 57px;
+}
+
+/* check any mistake in desktop mode, start working with the symbol, put the footer to most bottom */
