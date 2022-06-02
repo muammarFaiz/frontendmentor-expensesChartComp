@@ -2,15 +2,22 @@ const d = document
 const userbalance = d.getElementById('userbalance')
 const barscontainer = d.getElementById('barscontainer')
 const bar = d.getElementsByClassName('bar')
+const userdata = [
+  {"day": "mon", "amount": 17.45},
+  {"day": "tue", "amount": 34.91},
+  {"day": "wed", "amount": 52.36},
+  {"day": "thu", "amount": 31.07},
+  {"day": "fri", "amount": 23.39},
+  {"day": "sat", "amount": 43.28},
+  {"day": "sun", "amount": 25.48}
+]
 
 const main = async () => {
-  userbalance.innerHTML = 'Loading...'
-
-  const x = await fetch('../data.json')
-  const userdata = await x.json()
+  // userbalance.innerHTML = 'Loading...'
+  // const x = await fetch('../data.json')
+  // const userdata = await x.json()
   userbalance.innerHTML = '$921.48'
   console.log(userdata);
-  // console.log(barscontainer.children);
   const aa = barscontainer.children
   for(let i = 0; i < aa.length; i++) {
     const barchild = aa[i]
