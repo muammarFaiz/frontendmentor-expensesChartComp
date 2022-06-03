@@ -81,7 +81,7 @@ wanna learn about SASS or maybe other CSS Preprocessor, also practice and practi
 
 - [StackOverflow](https://stackoverflow.com/) - for obvious reasons
 - [MDN Mozilla](https://developer.mozilla.org/en-US/) - for obvious reasons
-- [Kevin Powell Youtube channel](https://www.example.com) - mr Kevin Powell the king of CSS
+- [Kevin Powell Youtube channel](https://www.youtube.com/kepowob) - mr Kevin Powell the king of CSS
 
 
 ## Author
