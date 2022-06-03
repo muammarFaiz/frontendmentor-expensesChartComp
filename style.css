@@ -6,11 +6,6 @@ body {
 }
 
 .card {
-  /* border: 2px solid green; */
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   width: fit-content;
   margin: auto;
 }
@@ -46,7 +41,6 @@ header {
 figcaption {
   display: flex;
   justify-content: space-between;
-  /* the opacity for hover */
 }
 
 figcaption>div>p {
@@ -86,7 +80,6 @@ figcaption>div>p {
 .bars {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  /* column-gap: 14px; */
   row-gap: 8px;
   align-items: end;
   padding: 7px;
@@ -111,7 +104,6 @@ figcaption>div>p {
   background-color: hsl(25, 47%, 15%);
   color: hsl(33, 100%, 98%);
   border-radius: 5px;
-  /* the box is not centered??? */
 }
 
 .totalperday>h1 {
@@ -198,5 +190,3 @@ footer {
 .attribution {
   margin-top: 57px;
 }
-
-/* check any mistake in desktop mode, start working with the symbol, put the footer to most bottom */
