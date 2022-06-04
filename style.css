@@ -190,3 +190,11 @@ footer {
 .attribution {
   margin-top: 57px;
 }
+
+.node-enter {
+  height: 20px !important;
+}
+
+.node-enter-done {
+  transition: height 500ms;
+}

@@ -1,4 +1,5 @@
 const e = React.createElement;
+const {CSSTransition} = ReactTransitionGroup;
 
 const bars = document.getElementById('barscontainer')
 const userBalance = document.getElementById('userbalance');
@@ -19,11 +20,13 @@ class CreateBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalperdayClass: 'totalperday'
+      totalperdayClass: 'totalperday',
+      barAttr: {},
+      animate: false
     }
   }
-
-  render() {
+  
+  _updateBar = () => {
     let totalMoney = 0;
     let highestDay = 0;
     for (let i = 0; i < userdata.length; i++) {
@@ -32,35 +35,56 @@ class CreateBar extends React.Component {
         highestDay = userdata[i].amount
       }
     }
-
-    // console.log(totalMoney);
-    // 227.94
     const percentage = (100 / (totalMoney / this.props.money)) * PERCENTAGE_MULTIPLIER
     const barHeight = LOWEST_HEIGHT + Math.round(percentage)
-    // console.log(barHeight);
-    const barAttr = {
-      style: { height: `${barHeight}px` },
-      onMouseEnter: (e) => {
-        this.setState((state, props) => {
-          return { totalperdayClass: `${state.totalperdayClass} showtotalday` }
-        })
-      },
-      onMouseLeave: (e) => {
-        this.setState((state, props) => {
-          const classList = state.totalperdayClass.split(' ')
-          return {totalperdayClass: classList[0]}
-        })
+    this.setState(() => {
+      const barAttr = {
+        onMouseEnter: (e) => {
+          this.setState((state, props) => {
+            return { totalperdayClass: `${state.totalperdayClass} showtotalday` }
+          })
+        },
+        onMouseLeave: (e) => {
+          this.setState((state, props) => {
+            const classList = state.totalperdayClass.split(' ')
+            return {totalperdayClass: classList[0]}
+          })
+        },
+        key: 'thebar'
       }
-    }
-    if(highestDay === this.props.money) {
-      barAttr.className = 'bar highestbar'
+      if(highestDay === this.props.money) {
+        barAttr.className = 'bar highestbar'
+      } else {
+        barAttr.className = 'bar'
+      }
+      return {barAttr: barAttr, barHeight: barHeight}
+    })
+  }
+
+  componentDidMount() {
+    // console.log('component did mount');
+    console.log(CSSTransition);
+    this._updateBar()
+    this.setState({animate: true})
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(!this.state.barAttr.style) {
+      this.setState(prev => ({barAttr: {...prev.barAttr, style: { height: `${this.state.barHeight}px` }}}))
     } else {
-      barAttr.className = 'bar'
+      // console.log('style applied');
+      // console.log(this.state);
     }
+  }
+
+  render = () => {
     return e(
       React.Fragment, null,
       e('div', { className: this.state.totalperdayClass }, e('h1', null, `$${this.props.money}`)),
-      e('div', barAttr)
+      e(
+        CSSTransition, { in: this.state.animate, timeout: 500, classNames: 'node' },
+        e('div', this.state.barAttr)
+      )
     )
   }
 }
@@ -68,5 +92,5 @@ class CreateBar extends React.Component {
 for (let i = 0; i < 7; i++) {
   const bar = bars.children[i];
   const root = ReactDOM.createRoot(bar)
-  root.render(e(CreateBar, {money: userdata[i].amount}))
+  root.render(e(CreateBar, { money: userdata[i].amount }))
 }
