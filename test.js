@@ -1,18 +1,24 @@
-const highest = 150
-const lowest = 30
-const key = 'use percentage of total expense in week'
-const percentageMultiplier = 5.2
-const listofmoney = [17.45, 34.91, 52.36, 31.07, 23.39, 43.28, 25.48]
-let totalmoney = 0
-listofmoney.forEach(n => {
-  totalmoney = totalmoney + n
-})
-console.log(totalmoney);
-const topercent = (index) => (100 / (totalmoney / listofmoney[index]))*5.2
-const mondaypercent = topercent(0)
-console.log(mondaypercent);
-const height = (thepercent) => lowest + Math.round(thepercent)
-const mondayheight = height(mondaypercent)
-console.log(mondayheight);
-const wedheight = height(topercent(2))
-console.log(wedheight);
+const a = () => {
+  setTimeout(() => {
+    console.log('timeout 1');
+  }, 1000);
+  console.log('after timeout 1');
+  setTimeout(() => {
+    console.log('timeout 2');
+  }, 1000);
+  console.log('after timeout 2');
+  setTimeout(() => {
+    console.log('timeout 3');
+  }, 1000);
+  console.log('after timeout 3');
+  setTimeout(() => {
+    console.log('timeout 4');
+  }, 1000);
+  setTimeout(() => {
+    console.log('timeout 5');
+  }, 1000);
+  setTimeout(() => {
+    console.log('timeout 6');
+  }, 1000);
+}
+a()

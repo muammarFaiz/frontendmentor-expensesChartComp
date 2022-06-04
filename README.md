@@ -72,6 +72,7 @@ const reactElement = React.createElement('div', {className: 'abc'}, 'my div')
 ```
 - using fetch to import json file
 - rgba, a for opacity
+- javascript browser event loop
 
 ### Continued development
 

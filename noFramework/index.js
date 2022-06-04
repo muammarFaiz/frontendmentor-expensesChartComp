@@ -12,43 +12,56 @@ const userdata = [
   {"day": "sun", "amount": 25.48}
 ]
 
-const PERCENTAGE_MULTIPLIER = 6
+const PERCENTAGE_MULTIPLIER = 6.5
 const LOWEST_HEIGHT = 1
+const SET_TIMEOUT_DURATION = 50
+const USER_BALANCE_STR = '$921.48'
 
 const main = async () => {
-  // userbalance.innerHTML = 'Loading...'
-  // const x = await fetch('../data.json')
-  // const userdata = await x.json()
-  userbalance.innerHTML = '$921.48'
+  userbalance.innerHTML = USER_BALANCE_STR
   console.log(userdata);
   const aa = barscontainer.children
+
+  for (let i = 0; i < 7; i++) {
+    const totalperday = d.createElement('div')
+    totalperday.classList.add('totalperday')
+    const bar = d.createElement('div')
+    bar.classList.add('bar')
+    aa[i].appendChild(totalperday)
+    aa[i].appendChild(bar)
+  }
+
   let totalmoney = 0
   let highestN = 0
-  for (let i = 0; i < userdata.length - 1; i++) {
+  for (let i = 0; i < userdata.length; i++) {
     const amount = userdata[i].amount
     totalmoney = totalmoney + amount
     if(amount > highestN) {
       highestN = amount
     }
   }
-  for(let i = 0; i < aa.length; i++) {
-    const barchild = aa[i]
-    const itsdata = userdata.find(obj => obj.day === barchild.className)
-    if(itsdata) {
-      const itstotal = barchild.children[0]
-      const thebar = barchild.children[1]
-      const theh1 = d.createElement('h1')
-      theh1.innerHTML = `$${itsdata.amount}`
-      itstotal.appendChild(theh1)
-      const itsPercentage = (100 / (totalmoney / itsdata.amount)) * PERCENTAGE_MULTIPLIER
-      const itsheight = LOWEST_HEIGHT + Math.round(itsPercentage)
-      console.log(itsheight);
-      thebar.setAttribute('style', `height: ${itsheight}px`)
-      if(itsdata.amount === highestN) {
-        thebar.classList.add('highestbar')
+  
+  console.log(totalmoney); // 202.46
+  setTimeout(() => {
+    for(let i = 0; i < aa.length; i++) {
+      const barchild = aa[i]
+      const itsdata = userdata.find(obj => obj.day === barchild.className)
+      if(itsdata) {
+        const itstotal = barchild.children[0]
+        const thebar = barchild.children[1]
+        const theh1 = d.createElement('h1')
+        theh1.innerHTML = `$${itsdata.amount}`
+        itstotal.appendChild(theh1)
+        const itsPercentage = (100 / (totalmoney / itsdata.amount)) * PERCENTAGE_MULTIPLIER
+        const itsheight = LOWEST_HEIGHT + Math.round(itsPercentage)
+        console.log(itsheight);
+        thebar.setAttribute('style', `height: ${itsheight}px`)
+        if(itsdata.amount === highestN) {
+          thebar.classList.add('highestbar')
+        }
       }
     }
-  }
+  }, SET_TIMEOUT_DURATION);
 
   for(let i = 0; i < bar.length; i++) {
     const itstotal = bar[i].previousElementSibling
