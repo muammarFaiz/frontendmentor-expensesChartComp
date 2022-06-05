@@ -38,12 +38,12 @@ header {
   color: hsl(33, 100%, 98%);
 }
 
-figcaption {
+.captioncontent {
   display: flex;
   justify-content: space-between;
 }
 
-figcaption>div>p {
+.captioncontent>div>p {
   margin: 0;
 }
 
@@ -183,7 +183,7 @@ figure>h1 {
   margin-bottom: 29px;
 }
 
-footer {
+.figcaption {
   padding: 0px 18px;
 }
 

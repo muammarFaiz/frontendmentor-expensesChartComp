@@ -2,6 +2,22 @@ const e = React.createElement;
 const {CSSTransition} = ReactTransitionGroup;
 
 const bars = document.getElementById('barscontainer')
+bars.setAttribute('tabIndex', '0')
+const totalperdayMod = (event) => {
+  const elems = document.querySelectorAll('.totalperday')
+  for (let i = 0; i < elems.length; i++) {
+    const element = elems[i];
+    if(event.key === 'Enter') {
+      if(element.className === 'totalperday') {
+        element.classList.add('showtotalday')
+      } else {
+        element.classList.remove('showtotalday')
+      }
+    }
+  }
+}
+bars.onkeydown = (event) => totalperdayMod(event);
+
 const userBalance = document.getElementById('userbalance');
 userBalance.innerHTML = '$921.48'
 const userdata = [
@@ -25,6 +41,19 @@ class CreateBar extends React.Component {
       animate: false
     }
   }
+
+  _focusme = (e) => {
+    this.setState((state, props) => {
+      return { totalperdayClass: `${state.totalperdayClass} showtotalday` }
+    })
+  }
+
+  _blurme = (e) => {
+    this.setState((state, props) => {
+      const classList = state.totalperdayClass.split(' ')
+      return { totalperdayClass: classList[0] }
+    })
+  }
   
   _updateBar = () => {
     let totalMoney = 0;
@@ -39,18 +68,10 @@ class CreateBar extends React.Component {
     const barHeight = LOWEST_HEIGHT + Math.round(percentage)
     this.setState(() => {
       const barAttr = {
-        onMouseEnter: (e) => {
-          this.setState((state, props) => {
-            return { totalperdayClass: `${state.totalperdayClass} showtotalday` }
-          })
-        },
-        onMouseLeave: (e) => {
-          this.setState((state, props) => {
-            const classList = state.totalperdayClass.split(' ')
-            return {totalperdayClass: classList[0]}
-          })
-        },
-        key: 'thebar'
+        onMouseEnter: this._focusme,
+        onMouseLeave: this._blurme,
+        key: 'thebar',
+        'aria-label': 'thebar'
       }
       if(highestDay === this.props.money) {
         barAttr.className = 'bar highestbar'
@@ -62,8 +83,6 @@ class CreateBar extends React.Component {
   }
 
   componentDidMount() {
-    // console.log('component did mount');
-    console.log(CSSTransition);
     this._updateBar()
     this.setState({animate: true})
   }
