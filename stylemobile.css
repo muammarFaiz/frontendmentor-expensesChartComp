@@ -50,7 +50,7 @@
   .footernumber2 {
     font-size: 16px;
   }
-  footer {
+  .figcaption {
     padding: 0px 9px 17px;
   }
   .bars> :nth-child(n+8) {

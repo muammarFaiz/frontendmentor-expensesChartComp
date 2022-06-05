@@ -1,6 +1,21 @@
 const d = document
 const userbalance = d.getElementById('userbalance')
 const barscontainer = d.getElementById('barscontainer')
+barscontainer.setAttribute('tabIndex', '0')
+const totalperdayMod = (event) => {
+  const elems = document.querySelectorAll('.totalperday')
+  for (let i = 0; i < elems.length; i++) {
+    const element = elems[i];
+    if (event.key === 'Enter') {
+      if (element.className === 'totalperday') {
+        element.classList.add('showtotalday')
+      } else {
+        element.classList.remove('showtotalday')
+      }
+    }
+  }
+}
+barscontainer.onkeydown = (event) => totalperdayMod(event);
 const bar = d.getElementsByClassName('bar')
 const userdata = [
   {"day": "mon", "amount": 17.45},
@@ -31,6 +46,7 @@ const main = async () => {
     aa[i].appendChild(bar)
   }
 
+  // count total money and highest spending day
   let totalmoney = 0
   let highestN = 0
   for (let i = 0; i < userdata.length; i++) {
@@ -41,7 +57,7 @@ const main = async () => {
     }
   }
   
-  console.log(totalmoney); // 202.46
+  // set time out to make animation with css transition
   setTimeout(() => {
     for(let i = 0; i < aa.length; i++) {
       const barchild = aa[i]
@@ -56,6 +72,7 @@ const main = async () => {
         const itsheight = LOWEST_HEIGHT + Math.round(itsPercentage)
         console.log(itsheight);
         thebar.setAttribute('style', `height: ${itsheight}px`)
+        thebar.setAttribute('aria-label', 'thebar')
         if(itsdata.amount === highestN) {
           thebar.classList.add('highestbar')
         }
